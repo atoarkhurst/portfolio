@@ -4,309 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ato Arkhurst — Frontend Developer</title>
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    :root {
-      --bg: #fafafa;
-      --text: #111;
-      --text-muted: #666;
-      --border: #e2e2e2;
-      --card-bg: #fff;
-      --placeholder-bg: #ebebeb;
-      --link: #111;
-      --link-hover: #444;
-      --max-width: 780px;
-    }
-
-    html {
-      font-size: 16px;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    /* ── Layout ── */
-    .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ── Header ── */
-    header {
-      padding: 72px 0 64px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    header .container {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .site-name {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      color: var(--text);
-    }
-
-    .site-title {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
-
-    /* ── Sections ── */
-    section {
-      padding: 56px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-    }
-
-    /* ── Bio ── */
-    .bio p {
-      font-size: 1.0625rem;
-      line-height: 1.75;
-      color: var(--text);
-      max-width: 620px;
-    }
-
-    /* ── Work ── */
-    .work-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
-
-    /* Full site build card */
-    .card-full {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .card-full .card-image {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      display: block;
-      background: var(--placeholder-bg);
-      object-fit: cover;
-    }
-
-    .card-full .card-body {
-      padding: 28px 32px 32px;
-    }
-
-    .card-full .card-meta {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 6px;
-    }
-
-    .card-full .card-name {
-      font-size: 1.0625rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-
-    .card-full .card-role {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .card-full .card-desc {
-      font-size: 0.9375rem;
-      color: var(--text);
-      line-height: 1.65;
-      margin-bottom: 24px;
-    }
-
-    .btn {
-      display: inline-block;
-      font-family: inherit;
-      font-size: 0.8125rem;
-      font-weight: 500;
-      color: var(--link);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      padding: 7px 16px;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .btn:hover {
-      border-color: var(--text);
-      color: var(--link-hover);
-    }
-
-    /* Feature work divider */
-    .work-divider {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 8px 0;
-    }
-
-    .work-divider span {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .work-divider::before,
-    .work-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    /* Feature card grid */
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .card-feature {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      overflow: hidden;
-    }
-
-    .card-feature .card-image {
-      width: 100%;
-      aspect-ratio: 3 / 2;
-      display: block;
-      background: var(--placeholder-bg);
-      object-fit: cover;
-    }
-
-    .card-feature .card-body {
-      padding: 18px 20px 22px;
-    }
-
-    .card-feature .card-name {
-      font-size: 0.9375rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 4px;
-    }
-
-    .card-feature .card-desc {
-      font-size: 0.875rem;
-      color: var(--text);
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .card-feature .card-context {
-      font-size: 0.8125rem;
-      color: var(--text-muted);
-    }
-
-    .card-feature .card-context a {
-      color: var(--text-muted);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      text-decoration-color: var(--border);
-      transition: color 0.15s, text-decoration-color 0.15s;
-    }
-
-    .card-feature .card-context a:hover {
-      color: var(--text);
-      text-decoration-color: var(--text-muted);
-    }
-
-    /* ── Footer ── */
-    footer {
-      padding: 48px 0 64px;
-    }
-
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-name {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-    }
-
-    .footer-email a {
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--text);
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1px;
-      transition: border-color 0.15s;
-    }
-
-    .footer-email a:hover {
-      border-color: var(--text);
-    }
-
-    /* ── Responsive ── */
-    @media (max-width: 600px) {
-      header {
-        padding: 48px 0 44px;
-      }
-
-      section {
-        padding: 44px 0;
-      }
-
-      .card-full .card-body {
-        padding: 22px 20px 26px;
-      }
-
-      .card-full .card-meta {
-        flex-direction: column;
-        gap: 2px;
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-      }
-    }
-  </style>
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -322,7 +27,7 @@
   <section class="bio">
     <div class="container">
       <p class="section-label">About</p>
-      <p>Three years building production websites across a range of clients and platforms. Currently at SIDEARM Sports, where I maintain and develop sites for a platform serving 1,500+ college athletics programs. I work primarily in HTML, CSS, JavaScript, and WordPress — focused on writing clean, maintainable code that holds up at scale.</p>
+      <p>Frontend developer with three years of production work across agencies and platforms. At SIDEARM Sports, I build and maintain sites for over 1,500 college athletics programs. My stack is HTML, CSS, JavaScript, and WordPress. I write code that is clean, maintainable, and built to last.</p>
     </div>
   </section>
 
@@ -330,107 +35,98 @@
   <section>
     <div class="container">
       <p class="section-label">Work</p>
-      <div class="work-grid">
 
-        <!-- Full site: Project 1 -->
-        <article class="card-full">
+      <!-- Five full site builds, one per row so the images dominate. -->
+      <div class="projects-list">
+
+        <!-- Project 1: Leadership Alliance Binghamton -->
+        <article class="project-card">
           <img
             class="card-image"
-            src=""
-            alt="Screenshot of the Michigan Wolverines athletics website homepage"
+            src="Leadership Alliance Desktop Mockup 1.png"
+            alt="Desktop mockup of the Leadership Alliance Binghamton website"
           >
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-name">Michigan Wolverines Athletics</span>
-              <span class="card-role">Frontend Developer</span>
+              <span class="card-name">Leadership Alliance Binghamton</span>
+              <span class="card-role">WordPress · ABC Creative Group</span>
             </div>
-            <p class="card-desc">Full redesign and build of the athletics site on the SIDEARM platform, covering the full-site template, navigation, and homepage layout. Tuned for performance across a high-traffic audience during game-day spikes.</p>
-            <a href="#" class="btn">View site &rarr;</a>
+            <p class="card-desc">Designed and built the full site for an economic development organization representing Greater Binghamton. The organization needed a digital presence that matched the weight of its civic mission, and this gave them one.</p>
+            <a href="https://leadershipalliancebinghamton.com" class="btn" target="_blank" rel="noopener">View site &rarr;</a>
           </div>
         </article>
 
-        <!-- Full site: Project 2 -->
-        <article class="card-full">
+        <!-- Project 2: Mackenzie Hughes LLP -->
+        <article class="project-card">
           <img
             class="card-image"
-            src=""
-            alt="Screenshot of a college athletics site homepage built on SIDEARM"
+            src="Mackenzie Hughes Desktop Mockup.png"
+            alt="Desktop mockup of the Mackenzie Hughes LLP website"
           >
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-name">Custom Athletics Portal</span>
-              <span class="card-role">Frontend Developer</span>
+              <span class="card-name">Mackenzie Hughes LLP</span>
+              <span class="card-role">WordPress · ABC Creative Group</span>
             </div>
-            <p class="card-desc">Ground-up build for a Division I program moving onto the SIDEARM platform. Translated brand guidelines into a full site system — type, color, layout, and component-level CSS — while staying within platform theming constraints.</p>
-            <a href="#" class="btn">View site &rarr;</a>
+            <p class="card-desc">Designed and built the full site for a Syracuse-based law firm, with dedicated practice area pages and attorney profiles. The goal was a site that felt as credible as the firm's reputation without getting in the way of clients finding what they need.</p>
+            <a href="https://mackenziehughes.com" class="btn" target="_blank" rel="noopener">View site &rarr;</a>
           </div>
         </article>
 
-        <!-- Divider: Feature Work -->
-        <div class="work-divider">
-          <span>Feature work</span>
-        </div>
-
-        <!-- Feature cards -->
-        <div class="feature-grid">
-
-          <article class="card-feature">
-            <img
-              class="card-image"
-              src=""
-              alt="Screenshot of a responsive ticket-purchase widget"
-            >
-            <div class="card-body">
-              <p class="card-name">Ticket Purchase Widget</p>
-              <p class="card-desc">Inline ticketing flow embedded on event pages. Reduced clicks to purchase and eliminated the redirect to a third-party page for supported vendors.</p>
-              <p class="card-context">Built for <a href="#">GoHeels.com</a></p>
+        <!-- Project 3: Syracuse Surge -->
+        <article class="project-card">
+          <img
+            class="card-image"
+            src="Syracuse Surge Desktop Mockup 1.png"
+            alt="Desktop mockup of the Syracuse Surge website"
+          >
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-name">Syracuse Surge</span>
+              <span class="card-role">WordPress · ABC Creative Group</span>
             </div>
-          </article>
+            <p class="card-desc">Designed and built the full site for a city-backed tech industry initiative in Syracuse. The site needed to communicate momentum and attract the kind of talent and investment that turns an initiative into an ecosystem.</p>
+            <a href="https://syracusesurge.com" class="btn" target="_blank" rel="noopener">View site &rarr;</a>
+          </div>
+        </article>
 
-          <article class="card-feature">
-            <img
-              class="card-image"
-              src=""
-              alt="Screenshot of a sport-switcher navigation component"
-            >
-            <div class="card-body">
-              <p class="card-name">Sport Navigation Overhaul</p>
-              <p class="card-desc">Rebuilt the sport-switcher component to support 30+ sports without overflowing the header. Collapsed to a searchable dropdown on mobile.</p>
-              <p class="card-context">Platform-wide rollout across <a href="#">SIDEARM Sports</a></p>
+        <!-- Project 4: Visions Wealth Management -->
+        <article class="project-card">
+          <img
+            class="card-image"
+            src="VWM Desktop Mockup.png"
+            alt="Desktop mockup of the Visions Wealth Management website"
+          >
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-name">Visions Wealth Management</span>
+              <span class="card-role">WordPress · ABC Creative Group</span>
             </div>
-          </article>
+            <p class="card-desc">Designed and built the full site for a financial advisory firm. The design does the quiet work of building trust before a single word is read.</p>
+            <a href="https://visionswealthmanagement.com" class="btn" target="_blank" rel="noopener">View site &rarr;</a>
+          </div>
+        </article>
 
-          <article class="card-feature">
-            <img
-              class="card-image"
-              src=""
-              alt="Screenshot of a roster card grid component"
-            >
-            <div class="card-body">
-              <p class="card-name">Roster Card Component</p>
-              <p class="card-desc">Modular roster display with filter by position, class year, and hometown. Designed to be dropped into any sport page with zero layout changes.</p>
-              <p class="card-context">Used across <a href="#">multiple D1 clients</a></p>
+        <!-- Project 5: Concordia University Wisconsin Athletics -->
+        <article class="project-card">
+          <img
+            class="card-image"
+            src="cuwfalcons-home.png"
+            alt="Desktop mockup of the Concordia University Wisconsin Athletics website"
+          >
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-name">Concordia University Wisconsin Athletics</span>
+              <span class="card-role">SIDEARM Sports</span>
             </div>
-          </article>
-
-          <article class="card-feature">
-            <img
-              class="card-image"
-              src=""
-              alt="Screenshot of an email capture and donation prompt banner"
-            >
-            <div class="card-body">
-              <p class="card-name">Donor Conversion Banner</p>
-              <p class="card-desc">Configurable sitewide banner for athletics fund drives. Supports custom messaging, countdown timers, and a one-click link to the donation platform.</p>
-              <p class="card-context">Built for <a href="#">multiple athletics departments</a></p>
-            </div>
-          </article>
-
-        </div>
-        <!-- /feature-grid -->
+            <p class="card-desc">Built the full athletics site for Concordia University Wisconsin on the SIDEARM Sports platform, covering schedules, rosters, and media across all sports. The work was about taking brand guidelines and making them feel at home in a system built for hundreds of different programs.</p>
+            <a href="https://cuwfalcons.com" class="btn" target="_blank" rel="noopener">View site &rarr;</a>
+          </div>
+        </article>
 
       </div>
-      <!-- /work-grid -->
+      <!-- /projects-list -->
+
     </div>
   </section>
 
