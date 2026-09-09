@@ -1,120 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-
 import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
 ---
-
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
-	<div class="stack gap-20">
-		<main class="wrapper about">
-			<Hero
-				title="About"
-				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
-			>
-				<img
-					width="1553"
-					height="873"
-					src="/assets/at-work.jpg"
-					alt="Jeanine White at work with a colleague"
-				/>
-			</Hero>
-
-			<section>
-				<h2 class="section-title">Background</h2>
-				<div class="content">
-					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy.
-						Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
-					</p>
-					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
-					</p>
-					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
-					</p>
-				</div>
-			</section>
-			<section>
-				<h2 class="section-title">Education</h2>
-				<div class="content">
-					<p>Corporis voluptates tenetur laudantium.</p>
-				</div>
-			</section>
-			<section>
-				<h2 class="section-title">Skills</h2>
-				<div class="content">
-					<p>officia unde omnis</p>
-				</div>
-			</section>
-		</main>
-
-		<ContactCTA />
-	</div>
+<BaseLayout title="About — Ato Arkhurst" description="Get to know Ato Arkhurst, a front-end developer based in Syracuse, New York.">
+	<main>
+		<header class="intro wrapper">
+			<p class="kicker">About / A little context</p>
+			<h1>I like building things<br/>I can <em>see, use,</em><br/>and improve.</h1>
+		</header>
+		<section class="story wrapper">
+			<div class="photo"><img src="/assets/ato-portrait.jpg" alt="Portrait of Ato Arkhurst" /></div>
+			<div class="copy">
+				<p class="lead">I’m Ato, a front-end developer based in Syracuse, New York. I currently work at SIDEARM Sports, building websites for Division I and Division II college athletic programs.</p>
+				<p>What I enjoy most about front-end development is that I get to make something tangible. I can take an idea, build it, see it working, and keep making it better.</p>
+				<p>A lot of my experience has been in agency-style work, moving between different clients and websites. That has taught me how to adapt, work within different systems, and pay attention to the details that make a site feel finished.</p>
+				<p>For my next step, I want more ownership over a product. I’m interested in building tools people actually use—not just something they visit once, but something that becomes part of how they work or go about their day. That’s the direction I’m continuing to grow toward.</p>
+			</div>
+		</section>
+		<section class="details wrapper">
+			<div><p class="kicker">Capabilities</p><ul><li>Front-end development</li><li>Responsive web design</li><li>Design implementation</li><li>Accessibility-minded UI</li><li>CMS-driven websites</li></ul></div>
+			<div><p class="kicker">What I’m looking for</p><p>A front-end role where I can get closer to the product, take ownership of what I build, and keep growing into the kind of developer who can turn an everyday problem into a useful tool.</p><a href="https://www.linkedin.com/in/atoarkhurst/" target="_blank" rel="noreferrer">View my LinkedIn ↗</a></div>
+		</section>
+	</main>
+	<ContactCTA />
 </BaseLayout>
-
 <style>
-	.about {
-		display: flex;
-		flex-direction: column;
-		gap: 3.5rem;
-	}
-
-	img {
-		margin-top: 1.5rem;
-		border-radius: 1.5rem;
-		box-shadow: var(--shadow-md);
-	}
-
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		color: var(--gray-200);
-	}
-
-	.section-title {
-		grid-column-start: 1;
-		font-size: var(--text-xl);
-		color: var(--gray-0);
-	}
-
-	.content {
-		grid-column: 2 / 4;
-	}
-
-	.content :global(a) {
-		text-decoration: 1px solid underline transparent;
-		text-underline-offset: 0.25em;
-		transition: text-decoration-color var(--theme-transition);
-	}
-
-	.content :global(a:hover),
-	.content :global(a:focus) {
-		text-decoration-color: currentColor;
-	}
-
-	@media (min-width: 50em) {
-		.about {
-			display: grid;
-			grid-template-columns: 1fr 60% 1fr;
-		}
-
-		.about > :global(:first-child) {
-			grid-column-start: 2;
-		}
-
-		section {
-			display: contents;
-			font-size: var(--text-lg);
-		}
-	}
+	.intro { padding:clamp(5rem,10vw,9rem) 0 clamp(4rem,8vw,7rem); }
+	.kicker { color:var(--ink); text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; font-weight:600; margin-bottom:2rem; }
+	h1 { font-size:var(--text-4xl); } h1 em { color:var(--accent); font-weight:500; }
+	.story { display:grid; gap:3rem; padding-bottom:clamp(6rem,12vw,11rem); }
+	.photo { overflow:hidden; border-radius:1.5rem; background:var(--paper-deep); min-height:30rem; }
+	.photo img { width:100%; height:100%; object-fit:cover; object-position:top; }
+	.copy { display:flex; flex-direction:column; justify-content:center; gap:1.5rem; font-size:1.1rem; max-width:37rem; }
+	.copy .lead { color:var(--ink); font:500 clamp(1.45rem,3vw,2.25rem)/1.25 var(--font-brand); letter-spacing:-.03em; }
+	.details { border-top:1px solid var(--line); padding-block:clamp(5rem,9vw,8rem); display:grid; gap:4rem; }
+	.details ul { list-style:none; padding:0; margin:0; color:var(--ink); font:500 clamp(1.4rem,3vw,2.2rem)/1.5 var(--font-brand); letter-spacing:-.03em; }
+	.details>div:last-child>p:not(.kicker) { max-width:34rem; font-size:1.15rem; margin-bottom:2rem; }
+	.details a { color:var(--ink); font-weight:600; text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:.3rem; }
+	@media(min-width:50em){.story{grid-template-columns:1fr 1fr; gap:clamp(4rem,8vw,9rem)}.details{grid-template-columns:1fr 1fr; gap:6rem}.photo{min-height:44rem}}
 </style>
