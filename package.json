@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-		"build": "astro build && node scripts/prepare-sites.mjs",
-		"check": "astro check",
+    "build": "astro build && node scripts/prepare-sites.mjs",
+    "check": "astro check",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -14,8 +14,5 @@
     "@astrojs/check": "0.9.4",
     "astro": "4.16.18",
     "typescript": "^5.4.5"
-  },
-  "devDependencies": {
-    "@rollup/rollup-darwin-arm64": "4.63.1"
   }
 }
