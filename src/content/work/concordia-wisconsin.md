@@ -1,7 +1,7 @@
 ---
 title: Concordia University Wisconsin Athletics
 publishDate: 2026-09-09 00:00:00
-img: /assets/concordia-wisconsin-cover.png
+img: /assets/concordia-laptop-mockup.png
 img_alt: Concordia University Wisconsin Athletics website homepage
 description: A full front-end integration for Concordia University Wisconsin Athletics, built from the design team’s Figma files on the SIDEARM Sports platform.
 tags: [Front-end integration, Responsive UI, Figma]
