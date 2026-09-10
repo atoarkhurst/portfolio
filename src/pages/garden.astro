@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GardenCard from '../components/GardenCard.astro';
+import ContactCTA from '../components/ContactCTA.astro';
+const notes = (await getCollection('notes')).sort((a,b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+---
+<BaseLayout title="The Garden | Ato Arkhurst" description="Notes from Ato Arkhurst on technology, attention, photography, and the things he is learning to notice.">
+	<main class="garden-page">
+		<section class="garden-hero wrapper">
+			<div class="hero-label"><span>03 / The Garden</span><span>{notes.length} things taking root</span></div>
+			<h1>A place for things<br/><em>I’m still figuring out.</em></h1>
+			<div class="intro">
+				<p>Notes on technology, attention, photography, and the small choices shaping how I spend my time.</p>
+				<div class="legend" aria-label="How notes grow"><span><i class="seed"></i>Seed</span><span><i class="growing"></i>Growing</span><span><i class="rooted"></i>Rooted</span></div>
+			</div>
+			<div class="contour" aria-hidden="true"><span></span><span></span><span></span></div>
+		</section>
+		<section class="garden-grid wrapper" aria-label="Garden notes">
+			{notes.map((note,index) => <GardenCard note={note} index={index} />)}
+		</section>
+		<section class="garden-note wrapper">
+			<p>Nothing here has to arrive fully formed.</p>
+			<span>Some ideas begin as a sentence. Some keep changing. A few grow roots.</span>
+		</section>
+	</main>
+	<ContactCTA />
+</BaseLayout>
+<style>
+	.garden-page { --garden-green:#789b00; }
+	.garden-hero { min-height:74svh; padding-block:clamp(4rem,9vw,8rem); position:relative; border-bottom:1px solid var(--line); overflow:hidden; }
+	.hero-label { display:flex; justify-content:space-between; gap:1rem; color:var(--ink); text-transform:uppercase; letter-spacing:.14em; font-size:.7rem; font-weight:600; position:relative; z-index:1; }
+	h1 { margin-top:clamp(4rem,8vw,7rem); font-size:clamp(3.6rem,9vw,8.5rem); max-width:13ch; position:relative; z-index:1; }
+	h1 em { color:var(--garden-green); font-weight:500; }
+	.intro { margin-top:3rem; display:grid; gap:2rem; position:relative; z-index:1; }
+	.intro>p { max-width:38ch; font-size:clamp(1.1rem,2vw,1.4rem); }
+	.legend { display:flex; flex-wrap:wrap; gap:1.3rem; align-items:center; color:var(--ink); font-size:.76rem; text-transform:uppercase; letter-spacing:.1em; }
+	.legend span { display:flex; gap:.5rem; align-items:center; }
+	.legend i { width:.5rem; aspect-ratio:1; border-radius:50%; background:var(--ink-soft); }
+	.legend .seed { background:#9c563a; }.legend .growing { background:var(--garden-green); }.legend .rooted { background:var(--accent); }
+	.contour { position:absolute; width:min(38rem,72vw); aspect-ratio:1; right:-12%; bottom:-32%; transform:rotate(-12deg); opacity:.55; }
+	.contour span { position:absolute; inset:0; border:1px solid var(--line); border-radius:45% 55% 42% 58% / 53% 40% 60% 47%; }
+	.contour span:nth-child(2){inset:12%;}.contour span:nth-child(3){inset:25%;}
+	.garden-grid { padding-block:clamp(5rem,10vw,9rem); display:grid; gap:1.4rem; }
+	.garden-note { padding-bottom:clamp(6rem,12vw,11rem); display:grid; gap:1rem; border-top:1px solid var(--line); padding-top:2rem; }
+	.garden-note p { color:var(--ink); font-family:var(--font-brand); font-size:clamp(1.7rem,4vw,3.5rem); line-height:1.05; letter-spacing:-.04em; }
+	.garden-note span { max-width:40ch; }
+	@media(min-width:50em){.intro{grid-template-columns:1fr auto;align-items:end;padding-left:25%}.garden-grid{grid-template-columns:repeat(2,1fr)}.garden-note{grid-template-columns:2fr 1fr;align-items:start}}
+</style>

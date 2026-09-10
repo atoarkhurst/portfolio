@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+interface Props { note: CollectionEntry<'notes'>; index: number; }
+const { note, index } = Astro.props;
+const date = note.data.publishDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+---
+<a class:list={['garden-card', `theme-${note.data.theme}`, { featured: note.data.featured }]} href={`/garden/${note.slug}/`}>
+	<div class="card-top"><span>{String(index + 1).padStart(2, '0')}</span><span class="stage"><i></i>{note.data.stage}</span></div>
+	<div class="card-copy">
+		<p class="tags">{note.data.tags.join(' · ')}</p>
+		<h3>{note.data.title}</h3>
+		<p class="description">{note.data.description}</p>
+	</div>
+	<div class="card-bottom"><span>{date} · {note.data.readingTime}</span><span class="arrow">↗</span></div>
+</a>
+<style>
+	.garden-card { --card-accent:var(--accent); min-height:24rem; display:flex; flex-direction:column; justify-content:space-between; padding:1.4rem; color:var(--ink); background:var(--surface); border:1px solid var(--line); border-radius:2.8rem .9rem 2.8rem .9rem; text-decoration:none; overflow:hidden; position:relative; transition:transform 240ms ease,box-shadow 240ms ease; }
+	.garden-card::before { content:""; position:absolute; width:12rem; aspect-ratio:1; right:-4rem; top:-5rem; border:1px solid color-mix(in srgb,var(--card-accent) 45%,transparent); border-radius:50%; box-shadow:0 0 0 1.5rem color-mix(in srgb,var(--card-accent) 7%,transparent),0 0 0 3rem color-mix(in srgb,var(--card-accent) 5%,transparent); }
+	.garden-card:hover { transform:translateY(-6px) rotate(-.35deg); box-shadow:var(--shadow-md); }
+	.card-top,.card-bottom { display:flex; justify-content:space-between; gap:1rem; align-items:center; position:relative; z-index:1; font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
+	.stage { display:flex; gap:.45rem; align-items:center; }
+	.stage i { width:.48rem; aspect-ratio:1; border-radius:50%; background:var(--card-accent); box-shadow:0 0 0 .22rem color-mix(in srgb,var(--card-accent) 14%,transparent); }
+	.card-copy { position:relative; z-index:1; }
+	.tags { color:var(--card-accent); font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; margin-bottom:1rem; }
+	h3 { font-size:clamp(2rem,4vw,3.7rem); max-width:12ch; }
+	.description { margin-top:1.25rem; max-width:36ch; color:var(--ink-soft); }
+	.arrow { font-size:1.25rem; color:var(--card-accent); transition:transform 180ms ease; }
+	.garden-card:hover .arrow { transform:translate(3px,-3px); }
+	.theme-signal { --card-accent:#2048d8; background:color-mix(in srgb,var(--accent) 8%,var(--surface)); }
+	.theme-light { --card-accent:#789b00; background:color-mix(in srgb,var(--accent-2) 15%,var(--surface)); }
+	.theme-quiet { --card-accent:#9c563a; }
+	@media(min-width:60em){.featured{grid-column:span 2;min-height:30rem}.featured h3{font-size:clamp(3rem,5.5vw,5.4rem);max-width:13ch}.garden-card:not(.featured){min-height:28rem}}
+</style>
