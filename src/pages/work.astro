@@ -5,7 +5,7 @@ import ContactCTA from '../components/ContactCTA.astro';
 import PortfolioPreview from '../components/PortfolioPreview.astro';
 const projects = (await getCollection('work')).sort((a,b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 ---
-<BaseLayout title="Selected Work — Ato Arkhurst" description="Selected front-end development and web design projects by Ato Arkhurst.">
+<BaseLayout title="Selected Work | Ato Arkhurst" description="Selected front-end development and web design projects by Ato Arkhurst.">
 	<main class="wrapper">
 		<header class="page-head"><p>Selected work / {String(projects.length).padStart(2,'0')} projects</p><h1>A few things<br/><em>I’ve helped build.</em></h1></header>
 		<ol class="projects">{projects.map((project,index) => <li><PortfolioPreview project={project} index={index} /></li>)}</ol>

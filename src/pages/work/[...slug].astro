@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
-<BaseLayout title={`${entry.data.title} — Ato Arkhurst`} description={entry.data.description}>
+<BaseLayout title={`${entry.data.title} | Ato Arkhurst`} description={entry.data.description}>
 	<main>
 		<header class="project-head wrapper">
 			<a href="/work/">← All work</a>
