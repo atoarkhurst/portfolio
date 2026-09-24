@@ -5,10 +5,10 @@ const { project, index = 0 } = Astro.props;
 const { data, slug } = project;
 ---
 <a class="project-card" href={`/work/${slug}`}>
-	<div class="image-wrap"><img src={data.img} alt={data.img_alt || ''} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" /></div>
+	<div class:list={['image-wrap', `theme-${data.coverTheme}`]}><img src={data.img} alt={data.img_alt || ''} loading={index < 2 ? 'eager' : 'lazy'} decoding="async" /></div>
 	<div class="meta">
 		<span class="number">{String(index + 1).padStart(2, '0')}</span>
-		<div><h3>{data.title}</h3><p>{data.tags.slice(0, 3).join(' · ')}</p></div>
+		<div><div class="title-row"><h3>{data.title}</h3>{data.status && <span class="status">{data.status}</span>}</div><p>{data.tags.slice(0, 3).join(' · ')}</p></div>
 		<span class="arrow" aria-hidden="true">↗</span>
 	</div>
 </a>
@@ -16,10 +16,14 @@ const { data, slug } = project;
 	.project-card { display:block; color:var(--ink); text-decoration:none; }
 	.image-wrap { overflow:hidden; border-radius:1.1rem; background:var(--paper-deep); border:1px solid var(--line); }
 	img { width:100%; aspect-ratio:16/11; object-fit:cover; transition:transform 600ms cubic-bezier(.2,.7,.2,1); }
+	.theme-cadence { background:radial-gradient(circle at 50% 32%,#352176 0,#17171e 48%,#0d0d12 100%); }
+	.theme-cadence img { object-fit:contain; padding:8%; }
 	.project-card:hover img { transform:scale(1.025); }
 	.meta { display:grid; grid-template-columns:auto 1fr auto; align-items:start; gap:1rem; padding:1rem .1rem 0; }
 	.number { color:var(--accent); font-family:var(--font-brand); font-size:.76rem; padding-top:.2rem; }
 	h3 { font-size:clamp(1.35rem,3vw,2rem); letter-spacing:-.04em; }
+	.title-row { display:flex; flex-wrap:wrap; align-items:center; gap:.65rem; }
+	.status { color:var(--accent); border:1px solid color-mix(in srgb,var(--accent) 35%,transparent); border-radius:99rem; padding:.25rem .5rem; font-size:.62rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
 	p { margin-top:.3rem; color:var(--ink-soft); font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; }
 	.arrow { font-size:1.4rem; transition:transform var(--theme-transition); }
 	.project-card:hover .arrow { transform:translate(3px,-3px); }
